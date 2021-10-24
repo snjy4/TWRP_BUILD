@@ -44,7 +44,7 @@ jobs:
         cd $ANDROID_ROOT
         repo init --depth=1 -u git://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11
         repo sync -j8 -c 
-        git clone https://github.com/AR1Ablock/TWRP-Device-Tree-Infinix-Smart-3-Plus-Nova-Super-Recovery.git device/infinix/Nova
+        git clone https://github.com/snjy4/DEVICE_DT.git device/motorola/guamp
  
     - name: Build recovery
       run: |
