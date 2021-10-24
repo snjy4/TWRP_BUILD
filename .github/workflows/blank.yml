@@ -1,5 +1,5 @@
 name: Build recovery Image
- 
+
 on: 
   push:
     branches:
@@ -7,21 +7,21 @@ on:
   release:
     types: [published]
   workflow_dispatch:
- 
+
 jobs:
- 
+
   build:
     runs-on: ubuntu-18.04
- 
+
     env:
       VENDOR: Motorola
       DEVICE: Guamp
       ANDROID_ROOT: /home/runner/work/twrp/
- 
+
     steps:
     - name: Checkout
       uses: actions/checkout@master
- 
+    
     - name: Initialization environment
       run: |
         sudo apt-get update
@@ -42,7 +42,7 @@ jobs:
         source of.env
         mkdir -p $ANDROID_ROOT
         cd $ANDROID_ROOT
-        repo init --depth=1 -u git://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11
+        repo init -u https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11
         repo sync -j8 -c 
         git clone https://github.com/snjy4/DEVICE_DT.git device/motorola/guamp
  
@@ -51,7 +51,7 @@ jobs:
         chmod +x build.sh
         bash -x build.sh
       shell: bash
- 
+
     - name : Upload recovery image
       uses: actions/upload-artifact@master
       with:
