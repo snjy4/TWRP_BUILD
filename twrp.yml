@@ -14,8 +14,8 @@ jobs:
     runs-on: ubuntu-18.04
  
     env:
-      VENDOR: infinix
-      DEVICE: Nova
+      VENDOR: Motorola
+      DEVICE: Guamp
       ANDROID_ROOT: /home/runner/work/twrp/
  
     steps:
