@@ -11,7 +11,7 @@ on:
 jobs:
 
   build:
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-18.04
 
     env:
       VENDOR: Motorola
@@ -31,7 +31,12 @@ jobs:
         sudo rm -rf \
           /usr/share/dotnet \
           /etc/mysql \
-          /etc/php
+          /etc/php \
+          .cache \
+          /var/cache/* \
+          /usr/local/share/boost \
+          /opt/ghc \
+          $AGENT_TOOLSDIRECTORY
         mkdir -p ~/bin
         wget 'https://storage.googleapis.com/git-repo-downloads/repo' -P ~/bin
         chmod +x ~/bin/repo
@@ -42,7 +47,7 @@ jobs:
         source of.env
         mkdir -p $ANDROID_ROOT
         cd $ANDROID_ROOT
-        repo init -u git://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11
+        repo init --depth=1 -u git://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11
         repo sync
         git clone https://github.com/snjy4/DEVICE_DT.git device/motorola/guamp
  
