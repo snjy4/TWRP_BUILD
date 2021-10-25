@@ -9,4 +9,4 @@ export LC_ALL="C"
 lunch omni_guamp-eng
 #mkdir -p /home/runner/work/twrp/out/target/product/yggdrasil/system/etc
 #touch /home/runner/work/twrp/out/target/product/yggdrasil/system/etc/ld.config.txt
-make -j$(nproc) recoveryimage
+mka recoveryimage 
