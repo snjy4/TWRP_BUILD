@@ -49,7 +49,7 @@ jobs:
         cd $ANDROID_ROOT
         repo init --depth=1 -u git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-10.0
         repo sync
-        git clone --depth=1 https://github.com/100Daisy/android_device_motorola_guamp.git device/motorola/guamp 
+        git clone --depth=1 https://github.com/snjy4/motoguamp11.git device/motorola/guamp 
     - name: Build recovery
       run: |
         chmod +x build.sh
