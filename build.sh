@@ -1,7 +1,7 @@
 #!/bin/bash
 source of.env
-rm /bin/python
-ln -s /bin/python2 /bin/python
+sudo rm /bin/python
+sudo ln -s /bin/python2 /bin/python
 cd $ANDROID_ROOT
 source build/envsetup.sh
 export ALLOW_MISSING_DEPENDENCIES=true
