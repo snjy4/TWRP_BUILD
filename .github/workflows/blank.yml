@@ -51,7 +51,8 @@ jobs:
         repo sync
         git clone https://github.com/100Daisy/android_device_motorola_guamp.git device/motorola/guamp
         rm /dev/motorola/guamp/BoardConfig.mk
-        git clone https://github.com/snjy4/new.git device/motorola/guamp
+        git clone https://github.com/snjy4/new.git neww/
+        mv neww/BoardConfig.mk device/motorola/guamp/
  
     - name: Build recovery
       run: |
