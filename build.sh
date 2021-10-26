@@ -7,5 +7,5 @@ source build/envsetup.sh
 . build/envsetup.sh
 export ALLOW_MISSING_DEPENDENCIES=true
 export LC_ALL="C"
-lunch omni_guamp-eng
-mka recoveryimage 
+lunch twrp_guamp-eng
+mka recoveryimage -j$(nproc --all)
