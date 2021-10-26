@@ -8,4 +8,4 @@ source build/envsetup.sh
 export ALLOW_MISSING_DEPENDENCIES=true
 export LC_ALL="C"
 lunch omni_guamp-eng
-mka recoveryimage -j$(nproc --all)
+make -j$(nproc --all) recoveryimage
