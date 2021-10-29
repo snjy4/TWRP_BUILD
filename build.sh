@@ -7,6 +7,6 @@ source build/envsetup.sh
 . build/envsetup.sh
 export ALLOW_MISSING_DEPENDENCIES=true
 export LC_ALL="C"
-export TW_THEME := portrait_hdpi
+export TW_THEME=portrait_hdpi
 lunch twrp_guamp-eng
 make -j$(nproc --all) recoveryimage
