@@ -52,7 +52,7 @@ jobs:
         git clone https://github.com/snjy4/twrp11.git device/motorola/guamp 
         mkdir -p out/target/product/guamp/
         cp device/motorola/guamp/prebuilt/*.img out/target/product/guamp/
-        cp out/target/product/guamp/dtb.img out/target/product/guamp/dtb
+    
     - name: Build recovery
       run: |
         chmod +x build.sh
