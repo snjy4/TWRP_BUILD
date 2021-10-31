@@ -21,4 +21,4 @@ export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
 export OF_DISABLE_MIUI_SPECIFIC_FEATURES=1
 source build/envsetup.sh
 lunch twrp_guamp-eng
-mka recoveryimage
+make -j$(nproc --all) recoveryimage
