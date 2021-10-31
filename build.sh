@@ -13,10 +13,10 @@ sudo bash setup/install_android_sdk.sh
 mkdir ~/OrangeFox_10
 cd ~/OrangeFox_10
 rsync rsync://sources.orangefox.download/sources/fox_10.0 . --progress -a
-cd ~/OrangeFox_10/fox_10.0)
+mkdir -p device/motorola/guamp
+https://github.com/mistersmee/android_device_motorola_cebu.git -b android-11 device/motorola/guamp
 export ALLOW_MISSING_DEPENDENCIES=true
 export LC_ALL="C"
-export TW_THEME=portrait_hdpi
 export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
 export OF_DISABLE_MIUI_SPECIFIC_FEATURES=1
 source build/envsetup.sh
