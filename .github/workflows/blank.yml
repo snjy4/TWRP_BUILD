@@ -16,7 +16,7 @@ jobs:
     env:
       VENDOR: motorola
       DEVICE: guamp
-      ANDROID_ROOT: /home/runner/work/twrp/
+      ANDROID_ROOT: /home/runner/work/fox_10.0
 
     steps:
     - name: Checkout
@@ -63,4 +63,4 @@ jobs:
       uses: actions/upload-artifact@master
       with:
         name: Images
-        path: /home/runner/out/target/product/*/*.img
+        path: /home/runner/out/target/product/fox_10.0/*.img
