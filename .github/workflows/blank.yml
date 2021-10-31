@@ -14,8 +14,8 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      VENDOR: Motorola
-      DEVICE: Guamp
+      VENDOR: motorola
+      DEVICE: guamp
       ANDROID_ROOT: /home/runner/work/twrp/
 
     steps:
