@@ -24,7 +24,8 @@ jobs:
     
     - name: Initialization environment
       run: |
-        sudo apt-get update  
+        sudo apt-get update
+        sudo apt install git
         sudo docker rmi `docker images -q`
         sudo rm -rf \
           /usr/share/dotnet \
@@ -34,12 +35,23 @@ jobs:
           /var/cache/* \
           /usr/local/share/boost \
           /opt/ghc \
-          $AGENT_TOOLSDIRECTORY
-        git config --global user.name "OrangeFox Volla Phone CI"
-        git config --global user.email "thisemaildoesnotexist@exist.com"
+          $AGENT_TOOLSDIRECTORY 
     - name: Downloading source code
       run: |
         source of.env
+        mkdir -p $ANDROID_ROOT
+        git config --global user.name "OrangeFox Volla Phone CI"
+        git config --global user.email "thisemaildoesnotexist@exist.com"
+        sudo apt install git aria2 -y
+        git clone https://gitlab.com/OrangeFox/misc/scripts
+        cd scripts
+        sudo bash setup/android_build_env.sh
+        sudo bash setup/install_android_sdk.sh
+        cd
+        cd $ANDROID_ROOT
+        rsync rsync://sources.orangefox.download/sources/fox_10.0 . --progress -a
+        mkdir -p device/motorola/guamp
+        git clone https://github.com/mistersmee/android_device_motorola_cebu.git -b android-11 device/motorola/guamp
     - name: Build recovery
       run: |
         chmod +x build.sh
@@ -50,4 +62,4 @@ jobs:
       uses: actions/upload-artifact@master
       with:
         name: Images
-        path: /home/runner/out/target/product/guamp/*.img
+        path: /home/runner/out/target/product/*/*.img
