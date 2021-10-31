@@ -15,7 +15,7 @@ mkdir ~/OrangeFox_10
 cd ~/OrangeFox_10
 rsync rsync://sources.orangefox.download/sources/fox_10.0 . --progress -a
 mkdir -p device/motorola/guamp
-https://github.com/mistersmee/android_device_motorola_cebu.git -b android-11 device/motorola/guamp
+git clone https://github.com/mistersmee/android_device_motorola_cebu.git -b android-11 device/motorola/guamp
 export ALLOW_MISSING_DEPENDENCIES=true
 export LC_ALL="C"
 export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
