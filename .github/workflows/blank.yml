@@ -54,7 +54,7 @@ jobs:
         ./get_fox_10.sh $ANDROID_ROOT
         cd $ANDROID_ROOT
         mkdir -p device/motorola/guamp
-        git clone https://github.com/mistersmee/android_device_motorola_cebu.git -b android-11 device/motorola/guamp
+        git clone https://github.com/snjy4/twrp11 device/motorola/guamp
     - name: Build recovery
       run: |
         chmod +x build.sh
