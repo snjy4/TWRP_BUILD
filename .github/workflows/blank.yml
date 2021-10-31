@@ -48,9 +48,11 @@ jobs:
         cd scripts
         sudo bash -c "yes || true" | setup/android_build_env.sh
         sudo bash -c "yes || true" | setup/install_android_sdk.sh
-        cd
+        cd 
+        git clone https://gitlab.com/OrangeFox/sync.git sync
+        cd sync
+        ./get_fox_10.sh $ANDROID_ROOT
         cd $ANDROID_ROOT
-        rsync rsync://sources.orangefox.download/sources/fox_10.0 . --progress -a
         mkdir -p device/motorola/guamp
         git clone https://github.com/mistersmee/android_device_motorola_cebu.git -b android-11 device/motorola/guamp
     - name: Build recovery
