@@ -54,7 +54,9 @@ jobs:
         ./get_fox_10.sh $ANDROID_ROOT
         cd $ANDROID_ROOT
         mkdir -p device/motorola/guamp
-        git clone https://github.com/RazaDroidProject/recovery_device_motorola_guamp.git device/motorola/guamp
+        git clone repo init --depth=1 -u git://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11 
+        device/motorola/guamp
+        repo sync
     - name: Build recovery
       run: |
         chmod +x build.sh
