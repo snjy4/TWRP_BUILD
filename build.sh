@@ -2,14 +2,6 @@
 source of.env
 sudo rm /bin/python
 sudo ln -s /bin/python2 /bin/python
-cd $ANDROID_ROOT
-source build/envsetup.sh
-. build/envsetup.sh
-export ALLOW_MISSING_DEPENDENCIES=true
-export LC_ALL="C"
-export TW_THEME=portrait_hdpi
-export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
-export OF_DISABLE_MIUI_SPECIFIC_FEATURES=1
 sudo apt-get update
 sudo apt-get install -y python3 python3-dev
 cd ~
@@ -21,8 +13,12 @@ sudo bash setup/install_android_sdk.sh
 mkdir ~/OrangeFox_10
 cd ~/OrangeFox_10
 rsync rsync://sources.orangefox.download/sources/fox_10.0 . --progress -a
-cd ~/OrangeFox (or (for dynamic devices) cd ~/OrangeFox_10/fox_10.0)
+cd ~/OrangeFox_10/fox_10.0)
+export ALLOW_MISSING_DEPENDENCIES=true
+export LC_ALL="C"
+export TW_THEME=portrait_hdpi
+export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
+export OF_DISABLE_MIUI_SPECIFIC_FEATURES=1
 source build/envsetup.sh
-
 lunch twrp_guamp-eng
 mka recoveryimage
