@@ -11,7 +11,7 @@ on:
 jobs:
 
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
 
     env:
       VENDOR: Motorola
@@ -24,9 +24,7 @@ jobs:
     
     - name: Initialization environment
       run: |
-        sudo apt-get update
-        sudo apt-get install -y \
-        bc bison build-essential ccache curl flex g++-multilib gcc-multilib git gnupg gperf imagemagick lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses5 libncurses5-dev libsdl1.2-dev libssl-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev libwxgtk3.0-dev
+        sudo apt-get update        
         sudo docker rmi `docker images -q`
         sudo rm -rf \
           /usr/share/dotnet \
@@ -37,22 +35,11 @@ jobs:
           /usr/local/share/boost \
           /opt/ghc \
           $AGENT_TOOLSDIRECTORY
-        mkdir -p ~/bin
-        wget 'https://storage.googleapis.com/git-repo-downloads/repo' -P ~/bin
-        chmod +x ~/bin/repo
         git config --global user.name "OrangeFox Volla Phone CI"
         git config --global user.email "thisemaildoesnotexist@exist.com"
     - name: Downloading source code
       run: |
         source of.env
-        mkdir -p $ANDROID_ROOT
-        cd $ANDROID_ROOT
-        repo init --depth=1 -u git://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11
-        repo sync
-        git clone https://github.com/snjy4/twrp11.git device/motorola/guamp 
-        #mkdir -p out/target/product/guamp/
-       # cp device/motorola/guamp/prebuilt/*.img out/target/product/guamp/
-    
     - name: Build recovery
       run: |
         chmod +x build.sh
@@ -63,4 +50,4 @@ jobs:
       uses: actions/upload-artifact@master
       with:
         name: Images
-        path: /home/runner/work/twrp/out/target/product/*/recovery.img
+        path: /home/runner/out/target/product/guamp/*.img
