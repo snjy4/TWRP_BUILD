@@ -3,7 +3,7 @@ source of.env
 sudo rm /bin/python
 sudo ln -s /bin/python2 /bin/python
 sudo apt-get update
-sudo apt-get install -y python3 python3-dev
+sudo apt-get install -y python2 python2-dev
 sudo apt install -y make
 cd ~
 sudo apt install git aria2 -y
