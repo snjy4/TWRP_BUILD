@@ -8,5 +8,21 @@ source build/envsetup.sh
 export ALLOW_MISSING_DEPENDENCIES=true
 export LC_ALL="C"
 export TW_THEME=portrait_hdpi
+export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
+export OF_DISABLE_MIUI_SPECIFIC_FEATURES=1
+sudo apt-get update
+sudo apt-get install -y python3 python3-dev
+cd ~
+sudo apt install git aria2 -y
+git clone https://gitlab.com/OrangeFox/misc/scripts
+cd scripts
+sudo bash setup/android_build_env.sh
+sudo bash setup/install_android_sdk.sh
+mkdir ~/OrangeFox_10
+cd ~/OrangeFox_10
+rsync rsync://sources.orangefox.download/sources/fox_10.0 . --progress -a
+cd ~/OrangeFox (or (for dynamic devices) cd ~/OrangeFox_10/fox_10.0)
+source build/envsetup.sh
+
 lunch twrp_guamp-eng
-make -j$(nproc --all) recoveryimage
+mka recoveryimage
