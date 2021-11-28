@@ -49,7 +49,7 @@ jobs:
         cd $ANDROID_ROOT
         repo init --depth=1 -u git://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11
         repo sync
-        git clone https://github.com/RazaDroidProject/recovery_device_motorola_guamp.git device/motorola/guamp 
+        git clone https://github.com/snjy4/device-tree-twrp.git device/motorola/guamp 
     
     - name: Build recovery
       run: |
