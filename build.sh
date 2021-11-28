@@ -1,8 +1,8 @@
 #!/bin/bash
 sudo rm /bin/python
 sudo ln -s /bin/python2 /bin/python
-cd $ANDROID_ROOT
 source of.env && \
+cd $ANDROID_ROOT && \
 . build/envsetup.sh && \
 lunch twrp_guamp-eng && \
 mka recoveryimage
