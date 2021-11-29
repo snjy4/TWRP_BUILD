@@ -51,7 +51,9 @@ jobs:
         repo sync
         git clone https://github.com/snjy4/recovery_device_motorola_guamp device/motorola/guamp
         git clone https://github.com/CaptainThrowback/android_device_qcom_twrp-common.git device/qcom/twrp-common
-        git clone hardware/qcom-caf/bootctrl
+        git clone https://github.com/LineageOS/android_hardware_qcom_bootctrl hardware/qcom-caf/bootctrl
+        git clone https://github.com/LineageOS/android_vendor_qcom_opensource_display-commonsys-intf vendor/qcom/opensource/commonsys-intf/display
+        git clone https://github.com/LineageOS/android_vendor_qcom_opensource_interface vendor/qcom/opensource/interfaces
     - name: Build recovery
       run: |
         chmod +x build.sh
