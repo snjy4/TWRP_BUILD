@@ -40,20 +40,16 @@ jobs:
         mkdir -p ~/bin
         wget 'https://storage.googleapis.com/git-repo-downloads/repo' -P ~/bin
         chmod +x ~/bin/repo
-        git config --global user.name "OrangeFox Volla Phone CI"
-        git config --global user.email "thisemaildoesnotexist@exist.com"
+        
     - name: Downloading source code
       run: |
         source of.env
-        mkdir -p /home/runner/work/twrp/
-        cd /home/runner/work/twrp/
+        mkdir -p $ANDROID_ROOT
+        cd $ANDROID_ROOT
         repo init --depth=1 -u git://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11
         repo sync
-        git clone https://github.com/snjy4/recovery_device_motorola_guamp.git device/motorola/guamp
-        git clone https://github.com/CaptainThrowback/android_device_qcom_twrp-common.git device/qcom/twrp-common
-        git clone https://github.com/LineageOS/android_hardware_qcom_bootctrl.git hardware/qcom-caf/bootctrl
-        git clone https://github.com/LineageOS/android_vendor_qcom_opensource_display-commonsys-intf.git vendor/qcom/opensource/commonsys-intf/display
-        git clone https://github.com/LineageOS/android_vendor_qcom_opensource_interfaces.git vendor/qcom/opensource/interfaces
+        git clone https://github.com/RazaDroidProject/recovery_device_motorola_guamp.git device/motorola/guamp 
+    
     - name: Build recovery
       run: |
         chmod +x build.sh
