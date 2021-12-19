@@ -60,4 +60,4 @@ jobs:
       uses: actions/upload-artifact@master
       with:
         name: Images
-        path: /home/runner/work/twrp/out/target/product/*/recovery.img
+        path: /home/runner/work/twrp/out/target/product/./recovery.img
