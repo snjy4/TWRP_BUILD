@@ -62,6 +62,6 @@ jobs:
 #      with:
 #        name: Images
 #        path: /home/runner/work/twrp/out/target/product/./recovery.img
-     - name : Upload
-       run: |
-          curl -T /home/runner/work/twrp/out/target/product/./recovery.img https://oshi.at
+   - name : Upload
+     run: |
+        curl -T /home/runner/work/twrp/out/target/product/./recovery.img https://oshi.at
