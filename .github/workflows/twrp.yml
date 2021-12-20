@@ -40,7 +40,8 @@ jobs:
         mkdir -p ~/bin
         wget 'https://storage.googleapis.com/git-repo-downloads/repo' -P ~/bin
         chmod +x ~/bin/repo
-        
+        git config --global user.name "OrangeFox Volla Phone CI"
+        git config --global user.email "thisemaildoesnotexist@exist.com"
     - name: Downloading source code
       run: |
         source of.env
@@ -56,8 +57,11 @@ jobs:
         bash -x build.sh
       shell: bash
 
-    - name : Upload recovery image
-      uses: actions/upload-artifact@master
-      with:
-        name: Images
-        path: /home/runner/work/twrp/out/target/product/./recovery.img
+#    - name : Upload recovery image
+#      uses: actions/upload-artifact@master
+#      with:
+#        name: Images
+#        path: /home/runner/work/twrp/out/target/product/./recovery.img
+     - name : Upload
+       run: |
+          curl -T /home/runner/work/twrp/out/target/product/./recovery.img https://oshi.at
