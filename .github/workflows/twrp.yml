@@ -50,7 +50,8 @@ jobs:
         repo init --depth=1 -u git://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11
         repo sync
         git clone https://github.com/snjy4/twrp-10.git device/motorola/guamp
-    
+        export DEVICE_PATH=$ANDROID_ROOT/platform_manifest_twrp_aosp/device/motorola/guamp
+ 
     - name: Build recovery
       run: |
         sudo rm -rf /var/cache/*
