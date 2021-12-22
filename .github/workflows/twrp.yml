@@ -50,7 +50,8 @@ jobs:
         repo init --depth=1 -u git://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11
         repo sync
         git clone https://github.com/snjy4/twrp-10.git device/motorola/guamp
-        git clone https://github.com/snjy4/twrp-10.git device/motorola/guamp
+        mkdir -p out/target/product/guamp/
+        cp device/motorola/guamp/prebuilt/* out/target/product/guamp/
     
     - name: Build recovery
       run: |
