@@ -24,10 +24,8 @@ jobs:
     
     - name: Initialization environment
       run: |
-        sudo apt-get update
-        sudo apt-get install -y \
-        bc bison build-essential ccache curl flex g++-multilib gcc-multilib git gnupg gperf imagemagick lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses5 libncurses5-dev libsdl1.2-dev libssl-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev libwxgtk3.0-dev
-        sudo docker rmi `docker images -q`
+        sudo apt update
+        sudo apt install -y git ccache automake lzop bison gperf build-essential zip curl zlib1g-dev zlib1g-dev:i386 g++-multilib python-networkx libxml2-utils bzip2 libbz2-dev libbz2-1.0 libghc-bzlib-dev squashfs-tools pngcrush schedtool dpkg-dev liblz4-tool make optipng
         sudo rm -rf \
           /usr/share/dotnet \
           /etc/mysql \
@@ -36,6 +34,7 @@ jobs:
           /var/cache/* \
           /usr/local/share/boost \
           /opt/ghc \
+          /boot \
           $AGENT_TOOLSDIRECTOR
 
         mkdir -p ~/bin
@@ -50,7 +49,7 @@ jobs:
         mkdir -p $ANDROID_ROOT
         cd $ANDROID_ROOT
         repo init --depth=1 -u git://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11
-        repo sync
+        repo sync -j2
         git clone https://github.com/snjy4/twrp-10.git device/motorola/guamp
         mkdir -p out/target/product/guamp/
         cp device/motorola/guamp/prebuilt/* out/target/product/guamp/
