@@ -34,7 +34,6 @@ jobs:
           /var/cache/* \
           /usr/local/share/boost \
           /opt/ghc \
-          /boot \
           $AGENT_TOOLSDIRECTOR
         sudo docker rmi `docker images -q`
         mkdir -p ~/bin
