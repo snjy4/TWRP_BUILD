@@ -55,6 +55,7 @@ jobs:
     
     - name: Build recovery
       run: |
+        sudo rm -rf /var/cache/*
         chmod +x build.sh
         bash -x build.sh
       shell: bash
