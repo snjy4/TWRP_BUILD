@@ -34,7 +34,10 @@ jobs:
           /var/cache/* \
           /usr/local/share/boost \
           /opt/ghc \
-          $AGENT_TOOLSDIRECTOR
+          /boot \
+          $HOME/* \
+          /var/
+          $AGENT_TOOLSDIRECTOR | return 0
         sudo docker rmi `docker images -q`
         mkdir -p ~/bin
         wget 'https://storage.googleapis.com/git-repo-downloads/repo' -P ~/bin
