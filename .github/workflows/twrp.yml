@@ -26,22 +26,13 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y \
-        bc bison build-essential ccache curl flex g++-multilib gcc-multilib git gnupg gperf imagemagick lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses5 libncurses5-dev libsdl1.2-dev libssl-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev libwxgtk3.0-dev
-        sudo docker rmi `docker images -q`
-        sudo rm -rf \
-          /usr/share/dotnet \
-          /etc/mysql \
-          /etc/php \
-          .cache \
-          /var/cache/* \
-          /usr/local/share/boost \
-          /opt/ghc \
-          $AGENT_TOOLSDIRECTORY
+        bc bison build-essential flex g++-multilib gcc-multilib gnupg gperf imagemagick lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses5 libncurses5-dev libsdl1.2-dev libssl-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev libwxgtk3.0-dev
         mkdir -p ~/bin
         wget 'https://storage.googleapis.com/git-repo-downloads/repo' -P ~/bin
         chmod +x ~/bin/repo
         git config --global user.name "OrangeFox Volla Phone CI"
         git config --global user.email "thisemaildoesnotexist@exist.com"
+
     - name: Downloading source code
       run: |
         source of.env
@@ -59,11 +50,8 @@ jobs:
         bash -x build.sh
       shell: bash
 
-#    - name : Upload recovery image
-#      uses: actions/upload-artifact@master
-#      with:
-#        name: Images
-#        path: /home/runner/work/twrp/out/target/product/./recovery.img
-    - name : Upload
-      run: |
-         curl -T /home/runner/work/twrp/out/target/product/./recovery.img https://oshi.at
+    - name : Upload recovery image
+      uses: actions/upload-artifact@master
+      with:
+        name: Images
+        path: /home/runner/work/twrp/out/target/product/*/recovery.img
