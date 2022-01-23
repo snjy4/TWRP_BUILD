@@ -25,6 +25,7 @@ jobs:
     
     - name: Initialization environment
       run: |
+        sudo docker rm $(docker ps -qa)
         bash -x cleanup.sh
         git clone https://github.com/akhilnarang/scripts &&\
         cd scripts
@@ -39,7 +40,6 @@ jobs:
           /usr/local/share/boost \
           /opt/ghc \
           $AGENT_TOOLSDIRECTORY
-        sudo docker rmi $(docker images -a -q)        
         mkdir -p ~/bin
         wget 'https://storage.googleapis.com/git-repo-downloads/repo' -P ~/bin
         chmod +x ~/bin/repo
