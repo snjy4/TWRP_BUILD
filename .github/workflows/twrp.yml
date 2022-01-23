@@ -3,7 +3,7 @@ name: Build recovery Image
 on: 
   push:
     branches:
-      - master
+      - main
   release:
     types: [published]
   workflow_dispatch:
@@ -21,11 +21,11 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@master
+      uses: actions/checkout@main
     
     - name: Initialization environment
       run: |
-        bash -c 'docker rm -flv ${docker ps -qa --filter status=exited}'
+        docker rm -flv $(docker ps -q -a --filter status=exited)
         bash -x cleanup.sh
         git clone https://github.com/akhilnarang/scripts &&\
         cd scripts
