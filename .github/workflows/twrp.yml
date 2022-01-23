@@ -17,6 +17,7 @@ jobs:
       VENDOR: motorola
       DEVICE: guamp
       ANDROID_ROOT: /home/runner/work/twrp/
+      TZ: Asia/Kolkata
 
     steps:
     - name: Checkout
