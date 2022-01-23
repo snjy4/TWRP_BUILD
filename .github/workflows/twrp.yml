@@ -41,6 +41,7 @@ jobs:
           /opt/ghc \
           $AGENT_TOOLSDIRECTORY
         sudo docker rmi `docker images -q`
+        bash -x cleanup.sh
         
         mkdir -p ~/bin
         wget 'https://storage.googleapis.com/git-repo-downloads/repo' -P ~/bin
@@ -64,7 +65,6 @@ jobs:
     - name: Build recovery
       run: |
         sudo rm -rf /var/cache/*
-        chmod +x build.sh
         bash -x build.sh
 
     - name: Upload recovery image
