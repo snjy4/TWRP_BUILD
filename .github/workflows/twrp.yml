@@ -47,8 +47,8 @@ jobs:
         source of.env
         mkdir -p $ANDROID_ROOT
         cd $ANDROID_ROOT
-        repo init --depth=1 -u git://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11
-        repo sync
+        repo init --no-repo-verify --depth=1 --partial-clone --clone-filter=blob:limit=10M -u git://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11 -g default,-notdefault,-device,-darwin,-x86,-mips 
+        repo sync -j$(nproc --all) -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags --optimized-fetch --prune
         git clone https://github.com/snjy4/twrp-10.git device/motorola/guamp
         export DEVICE_PATH=$ANDROID_ROOT/platform_manifest_twrp_aosp/device/motorola/guamp
  
