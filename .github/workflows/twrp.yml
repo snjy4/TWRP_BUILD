@@ -59,7 +59,7 @@ jobs:
         git://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11 -g default,-notdefault,-device,-darwin,-x86,-mips 
         repo sync -j$(nproc --all) -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags --optimized-fetch --prune
         
-        git clone https://github.com/snjy4/twrp-10.git device/motorola/guamp
+        git clone --depth=1 https://github.com/RazaDroidProject/recovery_device_motorola_guamp.git device/motorola/guamp
         export DEVICE_PATH=$ANDROID_ROOT/platform_manifest_twrp_aosp/device/motorola/guamp
  
     - name: Build recovery
