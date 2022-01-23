@@ -25,7 +25,7 @@ jobs:
     
     - name: Initialization environment
       run: |
-        sudo pkill a
+        sudo pkill a | true
         bash -x cleanup.sh
         git clone https://github.com/akhilnarang/scripts &&\
         cd scripts
