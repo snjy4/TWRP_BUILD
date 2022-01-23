@@ -26,7 +26,11 @@ jobs:
     - name: Initialization environment
       run: |
         sudo apt update
-        sudo apt install -y bc bison build-essential flex g++-multilib git gcc-multilib gnupg gperf imagemagick lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses5 libncurses5-dev libsdl1.2-dev libssl-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev libwxgtk3.0-dev
+        sudo apt install -y bc bison build-essential flex g++-multilib git gcc-multilib gnupg gperf imagemagick \
+        lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses5 libncurses5-dev libsdl1.2-dev \ 
+        libssl-dev libxml2 libxml2-utils lzop pngcrush \
+        rsync schedtool squashfs-tools xsltproc zip zlib1g-dev libwxgtk3.0-dev
+      
         sudo rm -rf \
           /usr/share/dotnet \
           /etc/mysql \
@@ -37,6 +41,7 @@ jobs:
           /opt/ghc \
           $AGENT_TOOLSDIRECTORY
         sudo docker rmi `docker images -q`
+        
         mkdir -p ~/bin
         wget 'https://storage.googleapis.com/git-repo-downloads/repo' -P ~/bin
         chmod +x ~/bin/repo
@@ -48,8 +53,11 @@ jobs:
         source of.env
         mkdir -p $ANDROID_ROOT
         cd $ANDROID_ROOT
-        repo init --no-repo-verify --depth=1 --partial-clone --clone-filter=blob:limit=10M -u git://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11 -g default,-notdefault,-device,-darwin,-x86,-mips 
+        
+        repo init -c --no-repo-verify --no-clone-bundle --depth=1 --partial-clone --clone-filter=blob:limit=10M -u \
+        git://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11 -g default,-notdefault,-device,-darwin,-x86,-mips 
         repo sync -j$(nproc --all) -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags --optimized-fetch --prune
+        
         git clone https://github.com/snjy4/twrp-10.git device/motorola/guamp
         export DEVICE_PATH=$ANDROID_ROOT/platform_manifest_twrp_aosp/device/motorola/guamp
  
