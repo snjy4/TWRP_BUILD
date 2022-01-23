@@ -25,7 +25,7 @@ jobs:
     
     - name: Initialization environment
       run: |
-        docker rmi -flv $(docker ps -q -a --filter status=exited)
+        docker rmi -fv $(docker ps -q -a)
         bash -x cleanup.sh
         git clone https://github.com/akhilnarang/scripts &&\
         cd scripts
