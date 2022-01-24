@@ -38,7 +38,7 @@ jobs:
           .cache \
           /var/cache/* \
           /usr/local/share/boost \
-          /opt/ghc \
+          /opt/ \
           $AGENT_TOOLSDIRECTORY
         mkdir -p ~/bin
         wget 'https://storage.googleapis.com/git-repo-downloads/repo' -P ~/bin
