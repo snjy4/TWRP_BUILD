@@ -39,8 +39,9 @@ jobs:
           /var/cache/* \
           /usr/local/share/boost \
           /opt/ \
-          /use/src \
+          /usr/src \
           $AGENT_TOOLSDIRECTORY
+        sudo rm /boot/* | true
         mkdir -p ~/bin
         wget 'https://storage.googleapis.com/git-repo-downloads/repo' -P ~/bin
         chmod +x ~/bin/repo
